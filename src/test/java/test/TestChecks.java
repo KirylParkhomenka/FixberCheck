@@ -10,7 +10,7 @@ import pages.MenuPage;
 import setup.Browser;
 import util.EmailSender;
 
-public class CheckNewProjects {
+public class TestChecks {
 
     private static final String BASE_URL = "http://fixber.com/";
 
