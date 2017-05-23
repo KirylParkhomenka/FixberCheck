@@ -34,7 +34,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.vitalliuss.helloci.App</mainClass>
+                            <mainClass>test.CheckNewProjects</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
