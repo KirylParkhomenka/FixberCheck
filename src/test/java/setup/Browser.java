@@ -1,37 +1,25 @@
 package setup;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
-import java.util.concurrent.TimeUnit;
+import static setup.DriverFactory.getWebDriverInstance;
 
 public class Browser {
 
-    private static final int IMPLICIT_WAIT = 30;
-    private static final int PAGE_LOAD_TIMEOUT = 60;
-
     private static WebDriver driver;
 
-    public static WebDriver getBrowser(String browserType) {
+    public static WebDriver getWrappedDriver(WebDriverTypes browserType) {
         new Browser(browserType);
         return driver;
     }
 
-    private Browser(String browserType) {
+    private Browser(WebDriverTypes browserType) {
         if (driver == null) {
-            driver = getDriver(browserType);
+            try {
+                driver = getWebDriverInstance(browserType);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-    }
-
-    private static WebDriver getDriver(String browserType) {
-        driver = new FirefoxDriver();
-        prepareFirefoxDriver();
-        return driver;
-    }
-
-    private static void prepareFirefoxDriver() {
-        driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
     }
 }

@@ -8,6 +8,7 @@ import pages.LoginPage;
 import pages.MainPage;
 import pages.MenuPage;
 import setup.Browser;
+import setup.WebDriverTypes;
 import util.EmailSender;
 
 public class TestChecks {
@@ -22,7 +23,7 @@ public class TestChecks {
 
     @BeforeClass()
     public void setUpBefore() {
-        driver = Browser.getBrowser("firefox");
+        driver = Browser.getWrappedDriver(WebDriverTypes.FIREFOX);
         driver.get(BASE_URL);
         loginPage = new LoginPage(driver);
         mainPage = new MainPage(driver);
